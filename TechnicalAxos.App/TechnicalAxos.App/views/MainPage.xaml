@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TechnicalAxos.App.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TechnicalAxos.App.helpers">
+
+    <StackLayout>
+        <Frame
+            Padding="24"
+            BackgroundColor="#2196F3"
+            CornerRadius="0">
+            <Label
+                FontSize="36"
+                HorizontalTextAlignment="Center"
+                Text="Carlos Graniel Technical Test"
+                TextColor="White" />
+        </Frame>
+        <Label
+            Padding="24"
+            HorizontalOptions="CenterAndExpand"
+            Text="{Binding BundleID}"
+            VerticalOptions="Start" />
+        <Image
+            Aspect="AspectFill"
+            HorizontalOptions="FillAndExpand"
+            MinimumHeightRequest="300"
+            MinimumWidthRequest="300"
+            Source="{Binding ImageSource}"
+            VerticalOptions="FillAndExpand" />
+        <Button
+            Command="{Binding pickFromGalleryCommand}"
+            HorizontalOptions="CenterAndExpand"
+            Text="Select Image"
+            VerticalOptions="CenterAndExpand" />
+
+        <ListView ItemsSource="{Binding CountriesList}" VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                Source="{Binding Flags.Png}" />
+                            <StackLayout Grid.Column="1">
+                                <Label FontSize="Medium" Text="{Binding Name.Common}" />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
